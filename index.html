@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shaarli demo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="same-origin">
+<link rel="alternate" type="application/atom+xml" href="https://demo.shaarli.org/feed/atom?" title="ATOM Feed" />
+<link rel="alternate" type="application/rss+xml" href="https://demo.shaarli.org/feed/rss?" title="RSS Feed" />
+<link href="/tpl/default/img/favicon.png" rel="shortcut icon" type="image/png" />
+<link href="/tpl/default/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+<link type="text/css" rel="stylesheet" href="/tpl/default/css/shaarli.min.css?v=c87ea616ecca0f449689d82ce0292608aa9b339fece8b661dbe4120491fe3100" />
+
+  <link type="text/css" rel="stylesheet" href="/tpl/default/css/markdown.min.css?v=c87ea616ecca0f449689d82ce0292608aa9b339fece8b661dbe4120491fe3100" />
+
+
+  <link type="text/css" rel="stylesheet" href="/plugins/qrcode/qrcode.css?v=c87ea616ecca0f449689d82ce0292608aa9b339fece8b661dbe4120491fe3100"/>
+
+
+<link rel="search" type="application/opensearchdescription+xml" href="/open-search"
+      title="Shaarli search - Shaarli demo" />
+
+
+</head>
+<body>
+<div class="shaarli-menu pure-g" id="shaarli-menu">
+  <div class="pure-u-lg-0 pure-u-1">
+    <div class="pure-menu">
+     <header role="banner">
+      <a href="/" class="pure-menu-link shaarli-title" id="shaarli-title-mobile">
+        <i class="fa fa-shaarli" aria-hidden="true"></i>
+        Shaarli demo
+      </a>
+      </header>
+      <a href="#" class="menu-toggle" id="menu-toggle" aria-label="Menu"><s class="bar" aria-hidden="true"></s><s class="bar" aria-hidden="true"></s></a>
+    </div>
+  </div>
+  <div class="pure-u-1">
+    <div class="pure-menu menu-transform pure-menu-horizontal pure-g">
+      <ul class="pure-menu-list pure-u-lg-5-6 pure-u-1">
+        <li class="pure-menu-item pure-u-0 pure-u-lg-visible">
+          <a href="/" class="pure-menu-link shaarli-title" id="shaarli-title-desktop">
+            <i class="fa fa-shaarli" aria-hidden="true"></i>
+            Shaarli demo
+          </a>
+        </li>
+        
+          <li class="pure-menu-item">
+            <a href="/admin/add-shaare" class="pure-menu-link" id="shaarli-menu-shaare">
+              <i class="fa fa-plus" aria-hidden="true"></i> Shaare
+            </a>
+          </li>
+          <li class="pure-menu-item" id="shaarli-menu-tools">
+            <a href="/admin/tools" class="pure-menu-link">Tools</a>
+          </li>
+        
+        <li class="pure-menu-item" id="shaarli-menu-tags">
+          <a href="/tags/cloud" class="pure-menu-link">Tag cloud</a>
+        </li>
+        
+          <li class="pure-menu-item" id="shaarli-menu-picwall">
+            <a href="/picture-wall?" class="pure-menu-link">Picture wall</a>
+          </li>
+        
+        <li class="pure-menu-item" id="shaarli-menu-daily">
+          <a href="/daily" class="pure-menu-link">Daily</a>
+        </li>
+        
+        <li class="pure-menu-item pure-u-lg-0 shaarli-menu-mobile" id="shaarli-menu-mobile-rss">
+            <a href="/feed/atom?" class="pure-menu-link">RSS Feed</a>
+        </li>
+        
+          <li class="pure-menu-item pure-u-lg-0 shaarli-menu-mobile" id="shaarli-menu-mobile-logout">
+            <a href="/admin/logout" class="pure-menu-link">Logout</a>
+          </li>
+        
+      </ul>
+      <div class="header-buttons pure-u-lg-1-6 pure-u-0 pure-u-lg-visible">
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item" id="shaarli-menu-desktop-search">
+            <a href="#" class="pure-menu-link subheader-opener"
+               data-open-id="search"
+               id="search-button" aria-label="Search" title="Search">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li class="pure-menu-item" id="shaarli-menu-desktop-rss">
+            <a href="/feed/atom?" class="pure-menu-link" title="RSS Feed" aria-label="RSS Feed">
+              <i class="fa fa-rss" aria-hidden="true"></i>
+            </a>
+          </li>
+          
+            <li class="pure-menu-item" id="shaarli-menu-desktop-logout">
+              <a href="/admin/logout" class="pure-menu-link" aria-label="Logout" title="Logout">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main id="content" class="container" role="main">
+  <div id="search" class="subheader-form searchform-block header-search">
+    <form method="GET" class="pure-form searchform" name="searchform" action="/">
+      <input type="text" id="searchform_value" name="searchterm" aria-label="Search text" placeholder="Search text"
+             
+      >
+      <input type="text" name="searchtags" id="tagfilter_value" aria-label="Filter by tag" placeholder="Filter by tag"
+             
+      autocomplete="off" data-multiple data-autofirst data-minChars="1"
+      data-list="help, shaarli, google, thumbnail, "
+      >
+      <button type="submit" class="search-button" aria-label="Search"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </form>
+  </div>
+  <div id="actions" class="subheader-form">
+    <div class="pure-g">
+      <div class="pure-u-1">
+        <a href="" id="actions-delete" class="button">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+          Delete
+        </a>&nbsp;
+        <a href="" class="actions-change-visibility button" data-visibility="public">
+          <i class="fa fa-globe" aria-hidden="true"></i>
+          Set public
+        </a>&nbsp;
+        <a href="" class="actions-change-visibility button" data-visibility="private">
+          <i class="fa fa-user-secret" aria-hidden="true"></i>
+          Set private
+        </a>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+  <div class="clear"></div>
+
+
+<div class="linkcount pure-u-0 pure-u-lg-visible">
+  
+  <span class="strong">7</span> shaares
+  
+  <br><span class="strong">3</span> private links
+  
+  
+</div>
+
+<input type="hidden" name="token" value="77f89ba9c84e74de3ef14aa7211d6079656d731e">
+<div id="search-linklist" class="searchform-block search-linklist">
+
+  <form method="GET" class="pure-form searchform" name="searchform">
+    <input type="text" name="searchterm" class="searchterm" aria-label="Search text" placeholder="Search text"
+           
+    >
+    <input type="text" name="searchtags" class="searchtags" aria-label="Filter by tag" placeholder="Filter by tag"
+           
+    autocomplete="off" data-multiple data-autofirst data-minChars="1"
+    data-list="help, shaarli, google, thumbnail, "
+    >
+    <button type="submit" class="search-button" aria-label="Search"><i class="fa fa-search" aria-hidden="true"></i></button>
+  </form>
+</div>
+
+
+
+<div id="linklist">
+  <div id="link-count-block" class="pure-g link-count-block">
+    <div class="pure-u-lg-2-24 pure-u-1-24"></div>
+    <div id="link-count-content" class="pure-u-lg-20-24 pure-u-22-24">
+      <div class="linkcount pure-u-lg-0 center">
+        
+        <span class="strong">7</span> shaares
+        
+        &middot; <span class="strong">3</span> private links
+        
+        
+      </div>
+
+      <div class="linklist-paging">
+  <div class="paging pure-g">
+    <div class="linklist-filters pure-u-1-3">
+      <span class="linklist-filters-text pure-u-0 pure-u-lg-visible">
+        Filters
+      </span>
+      
+      <a href="/admin/visibility/private" aria-label="Only display private links" title="Only display private links"
+         class="filter-off"
+      ><i class="fa fa-user-secret" aria-hidden="true"></i></a>
+      <a href="/admin/visibility/public" aria-label="Only display public links" title="Only display public links"
+         class="filter-off"
+      ><i class="fa fa-globe" aria-hidden="true"></i></a>
+      
+      <a href="/untagged-only" aria-label="Filter untagged links" title="Filter untagged links"
+         class="filter-off"
+      ><i class="fa fa-tag" aria-hidden="true"></i></a>
+      
+      <a href="#" aria-label="Select all" title="Select all"
+         class="filter-off select-all-button pure-u-0 pure-u-lg-visible"
+      ><i class="fa fa-check-square-o" aria-hidden="true"></i></a>
+      
+      <a href="#" class="filter-off fold-all pure-u-lg-0" aria-label="Fold all" title="Fold all">
+        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+      </a>
+      
+    </div>
+
+
+    <div class="linklist-pages pure-u-1-3">
+      
+      
+      
+
+    </div>
+
+    <div class="linksperpage pure-u-1-3">
+      <div class="pure-u-0 pure-u-lg-visible">Links per page</div>
+      <a href="/links-per-page?nb=20"
+			class="selected">20</a>
+      <a href="/links-per-page?nb=50"
+			>50</a>
+      <a href="/links-per-page?nb=100"
+			>100</a>
+      <form method="GET" class="pure-u-0 pure-u-lg-visible" action="/links-per-page">
+        <input type="text" name="nb" placeholder="133"
+			>
+      </form>
+      <a href="#" class="filter-off fold-all pure-u-0 pure-u-lg-visible" aria-label="Fold all" title="Fold all">
+        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+      <div id="plugin_zone_start_linklist" class="plugin_zone">
+        
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div id="linklist-loop-block" class="pure-g">
+    <div class="pure-u-lg-2-24 pure-u-1-24"></div>
+    <div id="linklist-loop-content" class="pure-u-lg-20-24 pure-u-22-24">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <div class="anchor" id="P6-RWg"></div>
+
+        <div class="linklist-item linklist-item" data-id="2">
+          <div class="linklist-item-title">
+            
+
+            <div class="linklist-item-editbuttons">
+              
+                <span class="label label-sticky">Sticky</span>
+              
+              
+            </div>
+
+            <h2>
+              <a href="/shaare/P6-RWg" class="linklist-real-url">
+                
+                  <i class="fa fa-sticky-note" aria-hidden="true"></i>
+                
+
+                <span class="linklist-link">Shaarli - The personal, minimalist, super-fast, database free, bookmarking service</span>
+              </a>
+            </h2>
+          </div>
+
+          
+            <div class="linklist-item-description">
+              <div class="markdown"><p>Welcome to Shaarli!</p>
+<p>Shaarli allows you to bookmark your favorite pages, and share them with others or store them privately.<br />
+You can add a description to your bookmarks, such as this one, and tag them.</p>
+<p>Create a new shaare by clicking the <code>+Shaare</code> button, or using any of the recommended tools (browser extension, mobile app, bookmarklet, REST API, etc.).</p>
+<p>You can easily retrieve your links, even with thousands of them, using the internal search engine, or search through tags (e.g. this Shaare is tagged with <code>shaarli</code> and <code>help</code>).<br />
+Hashtags such as <a href="./add-tag/shaarli">#shaarli</a> <a href="./add-tag/help">#help</a> are also supported.<br />
+You can also filter the available <a href="/feed/atom">RSS feed</a> and picture wall by tag or plaintext search.</p>
+<p>We hope that you will enjoy using Shaarli, maintained with ❤️ by the community!<br />
+Feel free to open <a href="https://github.com/shaarli/Shaarli/issues">an issue</a> if you have a suggestion or encounter an issue.</p></div>
+            </div>
+          
+
+          <div class="linklist-item-infos clear">
+            
+              <div class="linklist-item-tags">
+                <i class="fa fa-tags" aria-hidden="true"></i>
+                
+                
+                  <span class="label label-tag" title="Add tag">
+                    <a href="/add-tag/shaarli">shaarli</a>
+                  </span>
+                  &middot;
+                
+                  <span class="label label-tag" title="Add tag">
+                    <a href="/add-tag/help">help</a>
+                  </span>
+                  
+                
+              </div>
+            
+
+            <div class="linklist-item-infos-date-url-block pure-g">
+              <div class="linklist-item-infos-dateblock pure-u-lg-7-12 pure-u-1">
+                
+                  <div class="linklist-item-infos-controls-group pure-u-0 pure-u-lg-visible">
+                    <span class="linklist-item-infos-controls-item ctrl-checkbox">
+                      <input type="checkbox" class="link-checkbox" value="2">
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-edit">
+                      <a href="/admin/shaare/2" aria-label="Edit" title="Edit"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-delete">
+                      <a href="/admin/shaare/delete?id=2&amp;token=77f89ba9c84e74de3ef14aa7211d6079656d731e" aria-label="Delete"
+                         title="Delete" class="delete-link pure-u-0 pure-u-lg-visible confirm-delete">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-pin">
+                      <a href="/admin/shaare/2/pin?token=77f89ba9c84e74de3ef14aa7211d6079656d731e"
+                         title="Toggle sticky" aria-label="Toggle sticky" class="pin-link pinned-link pure-u-0 pure-u-lg-visible">
+                        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                  </div>
+                
+                <a href="/shaare/P6-RWg" title="Permalink">
+                  
+                    
+                    <span class="linkdate" title="Edited: 10 novembre 2020 à 20:53:38 UTC">
+                      <i class="fa fa-clock-o" aria-hidden="true"></i>
+                      10 novembre 2020 à 03:54:06 UTC
+                      *
+                      &middot;
+                    </span>
+                  
+                  permalink
+                </a>
+
+                
+
+                <div class="pure-u-0 pure-u-lg-visible">
+                  
+                    &middot;
+                    
+                    
+                      <div class="linkqrcode">
+    <a href="#" onclick="showQrCode(this); return false;" class="qrcode" data-permalink="/shaare/P6-RWg">
+        <img src="/plugins/qrcode/qrcode.png" class="linklist-plugin-icon" title="QR-Code" alt="QRCode">
+    </a>
+</div>
+
+                      
+                    
+                  
+                </div>
+              </div><div
+                
+                class="linklist-item-infos-url pure-u-lg-5-12 pure-u-1">
+                <a href="/shaare/P6-RWg" aria-label="Shaarli - The personal, minimalist, super-fast, database free, bookmarking service" title="Shaarli - The personal, minimalist, super-fast, database free, bookmarking service">
+                  <i class="fa fa-link" aria-hidden="true"></i> /shaare/P6-RWg
+                </a>
+                <div class="linklist-item-buttons pure-u-0 pure-u-lg-visible">
+                  <a href="#" aria-label="Fold" title="Fold" class="fold-button"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                </div>
+              </div>
+              <div class="mobile-buttons pure-u-1 pure-u-lg-0">
+                
+                  
+                  
+                    <div class="linkqrcode">
+    <a href="#" onclick="showQrCode(this); return false;" class="qrcode" data-permalink="/shaare/P6-RWg">
+        <img src="/plugins/qrcode/qrcode.png" class="linklist-plugin-icon" title="QR-Code" alt="QRCode">
+    </a>
+</div>
+
+                    
+                  
+                
+                
+                  &middot;
+                  <a href="/admin/shaare/delete?id=2&amp;token=77f89ba9c84e74de3ef14aa7211d6079656d731e" aria-label="Delete"
+                     title="Delete" class="delete-link confirm-delete">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="/admin/shaare/2" aria-label="Edit" title="Edit">
+                    <i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="/admin/shaare/2/pin?token=77f89ba9c84e74de3ef14aa7211d6079656d731e"
+                     aria-label="Toggle sticky"
+                     title="Toggle sticky"
+                     class="pin-link pinned-link"
+                  >
+                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="anchor" id="jjJUTg"></div>
+
+        <div class="linklist-item linklist-item" data-id="6">
+          <div class="linklist-item-title">
+            
+
+            <div class="linklist-item-editbuttons">
+              
+              
+            </div>
+
+            <h2>
+              <a href="http://www.wcdrutgers.net/Latin.htm" class="linklist-real-url">
+                
+                  <i class="fa fa-external-link" aria-hidden="true"></i>
+                
+
+                <span class="linklist-link">Latin by the Dowling Method</span>
+              </a>
+            </h2>
+          </div>
+
+          
+
+          <div class="linklist-item-infos clear">
+            
+
+            <div class="linklist-item-infos-date-url-block pure-g">
+              <div class="linklist-item-infos-dateblock pure-u-lg-7-12 pure-u-1">
+                
+                  <div class="linklist-item-infos-controls-group pure-u-0 pure-u-lg-visible">
+                    <span class="linklist-item-infos-controls-item ctrl-checkbox">
+                      <input type="checkbox" class="link-checkbox" value="6">
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-edit">
+                      <a href="/admin/shaare/6" aria-label="Edit" title="Edit"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-delete">
+                      <a href="/admin/shaare/delete?id=6&amp;token=77f89ba9c84e74de3ef14aa7211d6079656d731e" aria-label="Delete"
+                         title="Delete" class="delete-link pure-u-0 pure-u-lg-visible confirm-delete">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-pin">
+                      <a href="/admin/shaare/6/pin?token=77f89ba9c84e74de3ef14aa7211d6079656d731e"
+                         title="Toggle sticky" aria-label="Toggle sticky" class="pin-link  pure-u-0 pure-u-lg-visible">
+                        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                  </div>
+                
+                <a href="/shaare/jjJUTg" title="Permalink">
+                  
+                    
+                    <span class="linkdate" title="Edited: 10 novembre 2020 à 18:24:34 UTC">
+                      <i class="fa fa-clock-o" aria-hidden="true"></i>
+                      10 novembre 2020 à 18:24:32 UTC
+                      *
+                      &middot;
+                    </span>
+                  
+                  permalink
+                </a>
+
+                
+
+                <div class="pure-u-0 pure-u-lg-visible">
+                  
+                    &middot;
+                    
+                    
+                      <div class="linkqrcode">
+    <a href="#" onclick="showQrCode(this); return false;" class="qrcode" data-permalink="http://www.wcdrutgers.net/Latin.htm">
+        <img src="/plugins/qrcode/qrcode.png" class="linklist-plugin-icon" title="QR-Code" alt="QRCode">
+    </a>
+</div>
+
+                      
+                    
+                  
+                </div>
+              </div><div
+                
+                class="linklist-item-infos-url pure-u-lg-5-12 pure-u-1">
+                <a href="http://www.wcdrutgers.net/Latin.htm" aria-label="Latin by the Dowling Method" title="Latin by the Dowling Method">
+                  <i class="fa fa-link" aria-hidden="true"></i> http://www.wcdrutgers.net/Latin.htm
+                </a>
+                <div class="linklist-item-buttons pure-u-0 pure-u-lg-visible">
+                  <a href="#" aria-label="Fold" title="Fold" class="fold-button"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                </div>
+              </div>
+              <div class="mobile-buttons pure-u-1 pure-u-lg-0">
+                
+                  
+                  
+                    <div class="linkqrcode">
+    <a href="#" onclick="showQrCode(this); return false;" class="qrcode" data-permalink="http://www.wcdrutgers.net/Latin.htm">
+        <img src="/plugins/qrcode/qrcode.png" class="linklist-plugin-icon" title="QR-Code" alt="QRCode">
+    </a>
+</div>
+
+                    
+                  
+                
+                
+                  &middot;
+                  <a href="/admin/shaare/delete?id=6&amp;token=77f89ba9c84e74de3ef14aa7211d6079656d731e" aria-label="Delete"
+                     title="Delete" class="delete-link confirm-delete">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="/admin/shaare/6" aria-label="Edit" title="Edit">
+                    <i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="/admin/shaare/6/pin?token=77f89ba9c84e74de3ef14aa7211d6079656d731e"
+                     aria-label="Toggle sticky"
+                     title="Toggle sticky"
+                     class="pin-link "
+                  >
+                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="anchor" id="AIy6Hw"></div>
+
+        <div class="linklist-item linklist-item" data-id="5">
+          <div class="linklist-item-title">
+            
+
+            <div class="linklist-item-editbuttons">
+              
+              
+            </div>
+
+            <h2>
+              <a href="https://carolchen.me/" class="linklist-real-url">
+                
+                  <i class="fa fa-external-link" aria-hidden="true"></i>
+                
+
+                <span class="linklist-link">Carol Chen</span>
+              </a>
+            </h2>
+          </div>
+
+          
+            <div class="linklist-item-description">
+              <div class="markdown"><p>Makes things then fixes them. Computer science and circus arts.</p></div>
+            </div>
+          
+
+          <div class="linklist-item-infos clear">
+            
+
+            <div class="linklist-item-infos-date-url-block pure-g">
+              <div class="linklist-item-infos-dateblock pure-u-lg-7-12 pure-u-1">
+                
+                  <div class="linklist-item-infos-controls-group pure-u-0 pure-u-lg-visible">
+                    <span class="linklist-item-infos-controls-item ctrl-checkbox">
+                      <input type="checkbox" class="link-checkbox" value="5">
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-edit">
+                      <a href="/admin/shaare/5" aria-label="Edit" title="Edit"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-delete">
+                      <a href="/admin/shaare/delete?id=5&amp;token=77f89ba9c84e74de3ef14aa7211d6079656d731e" aria-label="Delete"
+                         title="Delete" class="delete-link pure-u-0 pure-u-lg-visible confirm-delete">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-pin">
+                      <a href="/admin/shaare/5/pin?token=77f89ba9c84e74de3ef14aa7211d6079656d731e"
+                         title="Toggle sticky" aria-label="Toggle sticky" class="pin-link  pure-u-0 pure-u-lg-visible">
+                        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                  </div>
+                
+                <a href="/shaare/AIy6Hw" title="Permalink">
+                  
+                    
+                    <span class="linkdate" title="Edited: 10 novembre 2020 à 18:23:47 UTC">
+                      <i class="fa fa-clock-o" aria-hidden="true"></i>
+                      10 novembre 2020 à 18:23:46 UTC
+                      *
+                      &middot;
+                    </span>
+                  
+                  permalink
+                </a>
+
+                
+
+                <div class="pure-u-0 pure-u-lg-visible">
+                  
+                    &middot;
+                    
+                    
+                      <div class="linkqrcode">
+    <a href="#" onclick="showQrCode(this); return false;" class="qrcode" data-permalink="https://carolchen.me/">
+        <img src="/plugins/qrcode/qrcode.png" class="linklist-plugin-icon" title="QR-Code" alt="QRCode">
+    </a>
+</div>
+
+                      
+                    
+                  
+                </div>
+              </div><div
+                
+                class="linklist-item-infos-url pure-u-lg-5-12 pure-u-1">
+                <a href="https://carolchen.me/" aria-label="Carol Chen" title="Carol Chen">
+                  <i class="fa fa-link" aria-hidden="true"></i> https://carolchen.me/
+                </a>
+                <div class="linklist-item-buttons pure-u-0 pure-u-lg-visible">
+                  <a href="#" aria-label="Fold" title="Fold" class="fold-button"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                </div>
+              </div>
+              <div class="mobile-buttons pure-u-1 pure-u-lg-0">
+                
+                  
+                  
+                    <div class="linkqrcode">
+    <a href="#" onclick="showQrCode(this); return false;" class="qrcode" data-permalink="https://carolchen.me/">
+        <img src="/plugins/qrcode/qrcode.png" class="linklist-plugin-icon" title="QR-Code" alt="QRCode">
+    </a>
+</div>
+
+                    
+                  
+                
+                
+                  &middot;
+                  <a href="/admin/shaare/delete?id=5&amp;token=77f89ba9c84e74de3ef14aa7211d6079656d731e" aria-label="Delete"
+                     title="Delete" class="delete-link confirm-delete">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="/admin/shaare/5" aria-label="Edit" title="Edit">
+                    <i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="/admin/shaare/5/pin?token=77f89ba9c84e74de3ef14aa7211d6079656d731e"
+                     aria-label="Toggle sticky"
+                     title="Toggle sticky"
+                     class="pin-link "
+                  >
+                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="anchor" id="frIq6Q"></div>
+
+        <div class="linklist-item linklist-item" data-id="4">
+          <div class="linklist-item-title">
+            
+
+            <div class="linklist-item-editbuttons">
+              
+              
+            </div>
+
+            <h2>
+              <a href="http://www.google.com" class="linklist-real-url">
+                
+                  <i class="fa fa-external-link" aria-hidden="true"></i>
+                
+
+                <span class="linklist-link">Google</span>
+              </a>
+            </h2>
+          </div>
+
+          
+            <div class="linklist-item-description">
+              <div class="markdown"><p>Google search </p></div>
+            </div>
+          
+
+          <div class="linklist-item-infos clear">
+            
+              <div class="linklist-item-tags">
+                <i class="fa fa-tags" aria-hidden="true"></i>
+                
+                
+                  <span class="label label-tag" title="Add tag">
+                    <a href="/add-tag/google">google</a>
+                  </span>
+                  
+                
+              </div>
+            
+
+            <div class="linklist-item-infos-date-url-block pure-g">
+              <div class="linklist-item-infos-dateblock pure-u-lg-7-12 pure-u-1">
+                
+                  <div class="linklist-item-infos-controls-group pure-u-0 pure-u-lg-visible">
+                    <span class="linklist-item-infos-controls-item ctrl-checkbox">
+                      <input type="checkbox" class="link-checkbox" value="4">
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-edit">
+                      <a href="/admin/shaare/4" aria-label="Edit" title="Edit"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-delete">
+                      <a href="/admin/shaare/delete?id=4&amp;token=77f89ba9c84e74de3ef14aa7211d6079656d731e" aria-label="Delete"
+                         title="Delete" class="delete-link pure-u-0 pure-u-lg-visible confirm-delete">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-pin">
+                      <a href="/admin/shaare/4/pin?token=77f89ba9c84e74de3ef14aa7211d6079656d731e"
+                         title="Toggle sticky" aria-label="Toggle sticky" class="pin-link  pure-u-0 pure-u-lg-visible">
+                        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                  </div>
+                
+                <a href="/shaare/frIq6Q" title="Permalink">
+                  
+                    
+                    <span class="linkdate" title="Edited: 10 novembre 2020 à 15:35:09 UTC">
+                      <i class="fa fa-clock-o" aria-hidden="true"></i>
+                      10 novembre 2020 à 15:35:07 UTC
+                      *
+                      &middot;
+                    </span>
+                  
+                  permalink
+                </a>
+
+                
+
+                <div class="pure-u-0 pure-u-lg-visible">
+                  
+                    &middot;
+                    
+                    
+                      <div class="linkqrcode">
+    <a href="#" onclick="showQrCode(this); return false;" class="qrcode" data-permalink="http://www.google.com">
+        <img src="/plugins/qrcode/qrcode.png" class="linklist-plugin-icon" title="QR-Code" alt="QRCode">
+    </a>
+</div>
+
+                      
+                    
+                  
+                </div>
+              </div><div
+                
+                class="linklist-item-infos-url pure-u-lg-5-12 pure-u-1">
+                <a href="http://www.google.com" aria-label="Google" title="Google">
+                  <i class="fa fa-link" aria-hidden="true"></i> http://www.google.com
+                </a>
+                <div class="linklist-item-buttons pure-u-0 pure-u-lg-visible">
+                  <a href="#" aria-label="Fold" title="Fold" class="fold-button"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                </div>
+              </div>
+              <div class="mobile-buttons pure-u-1 pure-u-lg-0">
+                
+                  
+                  
+                    <div class="linkqrcode">
+    <a href="#" onclick="showQrCode(this); return false;" class="qrcode" data-permalink="http://www.google.com">
+        <img src="/plugins/qrcode/qrcode.png" class="linklist-plugin-icon" title="QR-Code" alt="QRCode">
+    </a>
+</div>
+
+                    
+                  
+                
+                
+                  &middot;
+                  <a href="/admin/shaare/delete?id=4&amp;token=77f89ba9c84e74de3ef14aa7211d6079656d731e" aria-label="Delete"
+                     title="Delete" class="delete-link confirm-delete">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="/admin/shaare/4" aria-label="Edit" title="Edit">
+                    <i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="/admin/shaare/4/pin?token=77f89ba9c84e74de3ef14aa7211d6079656d731e"
+                     aria-label="Toggle sticky"
+                     title="Toggle sticky"
+                     class="pin-link "
+                  >
+                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="anchor" id="SMEriw"></div>
+
+        <div class="linklist-item linklist-item private" data-id="3">
+          <div class="linklist-item-title">
+            
+              <div
+                class="linklist-item-thumbnail "
+                style="width:125px;height:90px;"
+                
+              >
+                <div class="thumbnail">
+                  
+                  <a href="https://stackoverflow.com/questions/5178292/pip-install-mysql-python-fails-with-environmenterror-mysql-config-not-found?rq=1" aria-hidden="true" tabindex="-1">
+                  <img data-src="/cache/thumb/d0cc85b26f2ceb8714b978e07def4f6e/65ead3cd8f394ae7280b937c4e57fec4577c6781125901.jpg" class="b-lazy"
+                    src=""
+                    alt="" width="125" height="90" />
+                  </a>
+                </div>
+              </div>
+            
+
+            <div class="linklist-item-editbuttons">
+              
+              
+                <span class="label label-private">Private</span>
+              
+            </div>
+
+            <h2>
+              <a href="https://stackoverflow.com/questions/5178292/pip-install-mysql-python-fails-with-environmenterror-mysql-config-not-found?rq=1" class="linklist-real-url">
+                
+                  <i class="fa fa-external-link" aria-hidden="true"></i>
+                
+
+                <span class="linklist-link">pip install mysql-python fails with EnvironmentError: mysql_config not found - Stack Overflow</span>
+              </a>
+            </h2>
+          </div>
+
+          
+            <div class="linklist-item-description">
+              <div class="markdown"><p>This is the error I get</p>
+<p>(mysite)zjm1126@zjm1126-G41MT-S2:~/zjm_test/mysite$ pip install mysql-python<br />
+Downloading/unpacking mysql-python<br />
+Downloading MySQL-python-1.2.3.tar.gz (70Kb): 70Kb downloa...</p></div>
+            </div>
+          
+
+          <div class="linklist-item-infos clear">
+            
+
+            <div class="linklist-item-infos-date-url-block pure-g">
+              <div class="linklist-item-infos-dateblock pure-u-lg-7-12 pure-u-1">
+                
+                  <div class="linklist-item-infos-controls-group pure-u-0 pure-u-lg-visible">
+                    <span class="linklist-item-infos-controls-item ctrl-checkbox">
+                      <input type="checkbox" class="link-checkbox" value="3">
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-edit">
+                      <a href="/admin/shaare/3" aria-label="Edit" title="Edit"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-delete">
+                      <a href="/admin/shaare/delete?id=3&amp;token=77f89ba9c84e74de3ef14aa7211d6079656d731e" aria-label="Delete"
+                         title="Delete" class="delete-link pure-u-0 pure-u-lg-visible confirm-delete">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-pin">
+                      <a href="/admin/shaare/3/pin?token=77f89ba9c84e74de3ef14aa7211d6079656d731e"
+                         title="Toggle sticky" aria-label="Toggle sticky" class="pin-link  pure-u-0 pure-u-lg-visible">
+                        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                  </div>
+                
+                <a href="/shaare/SMEriw" title="Permalink">
+                  
+                    
+                    <span class="linkdate" title="Edited: 10 novembre 2020 à 03:54:48 UTC">
+                      <i class="fa fa-clock-o" aria-hidden="true"></i>
+                      10 novembre 2020 à 03:54:47 UTC
+                      *
+                      &middot;
+                    </span>
+                  
+                  permalink
+                </a>
+
+                
+                  <a href="/admin/shaare/private/SMEriw?token=77f89ba9c84e74de3ef14aa7211d6079656d731e" title="Share a private link">
+                    <i class="fa fa-share-alt"></i>
+                  </a>
+                
+
+                <div class="pure-u-0 pure-u-lg-visible">
+                  
+                    &middot;
+                    
+                    
+                      <div class="linkqrcode">
+    <a href="#" onclick="showQrCode(this); return false;" class="qrcode" data-permalink="https://stackoverflow.com/questions/5178292/pip-install-mysql-python-fails-with-environmenterror-mysql-config-not-found?rq=1">
+        <img src="/plugins/qrcode/qrcode.png" class="linklist-plugin-icon" title="QR-Code" alt="QRCode">
+    </a>
+</div>
+
+                      
+                    
+                  
+                </div>
+              </div><div
+                
+                class="linklist-item-infos-url pure-u-lg-5-12 pure-u-1">
+                <a href="https://stackoverflow.com/questions/5178292/pip-install-mysql-python-fails-with-environmenterror-mysql-config-not-found?rq=1" aria-label="pip install mysql-python fails with EnvironmentError: mysql_config not found - Stack Overflow" title="pip install mysql-python fails with EnvironmentError: mysql_config not found - Stack Overflow">
+                  <i class="fa fa-link" aria-hidden="true"></i> https://stackoverflow.com/questions/5178292/pip-install-mysql-python-fails-with-environmenterror-mysql-config-not-found?rq=1
+                </a>
+                <div class="linklist-item-buttons pure-u-0 pure-u-lg-visible">
+                  <a href="#" aria-label="Fold" title="Fold" class="fold-button"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                </div>
+              </div>
+              <div class="mobile-buttons pure-u-1 pure-u-lg-0">
+                
+                  
+                  
+                    <div class="linkqrcode">
+    <a href="#" onclick="showQrCode(this); return false;" class="qrcode" data-permalink="https://stackoverflow.com/questions/5178292/pip-install-mysql-python-fails-with-environmenterror-mysql-config-not-found?rq=1">
+        <img src="/plugins/qrcode/qrcode.png" class="linklist-plugin-icon" title="QR-Code" alt="QRCode">
+    </a>
+</div>
+
+                    
+                  
+                
+                
+                  &middot;
+                  <a href="/admin/shaare/delete?id=3&amp;token=77f89ba9c84e74de3ef14aa7211d6079656d731e" aria-label="Delete"
+                     title="Delete" class="delete-link confirm-delete">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="/admin/shaare/3" aria-label="Edit" title="Edit">
+                    <i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="/admin/shaare/3/pin?token=77f89ba9c84e74de3ef14aa7211d6079656d731e"
+                     aria-label="Toggle sticky"
+                     title="Toggle sticky"
+                     class="pin-link "
+                  >
+                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="anchor" id="5onSVw"></div>
+
+        <div class="linklist-item linklist-item private" data-id="1">
+          <div class="linklist-item-title">
+            
+
+            <div class="linklist-item-editbuttons">
+              
+              
+                <span class="label label-private">Private</span>
+              
+            </div>
+
+            <h2>
+              <a href="/shaare/5onSVw" class="linklist-real-url">
+                
+                  <i class="fa fa-sticky-note" aria-hidden="true"></i>
+                
+
+                <span class="linklist-link">Note: Shaare descriptions</span>
+              </a>
+            </h2>
+          </div>
+
+          
+            <div class="linklist-item-description">
+              <div class="markdown"><p>Adding a shaare without entering a URL creates a text-only &quot;note&quot; post such as this one.<br />
+This note is private, so you are the only one able to see it while logged in.</p>
+<p>You can use this to keep notes, post articles, code snippets, and much more.</p>
+<p>The Markdown formatting setting allows you to format your notes and bookmark description:</p>
+<h3>Title headings</h3>
+<h4>Multiple headings levels</h4>
+<ul>
+<li>bullet lists</li>
+<li><em>italic</em> text</li>
+<li><strong>bold</strong> text</li>
+<li><del>strike through</del> text</li>
+<li><code>code</code> blocks</li>
+<li>images</li>
+<li><a href="https://en.wikipedia.org/wiki/Markdown">links</a></li>
+</ul>
+<p>Markdown also supports tables:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Color</th>
+<th>Qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orange</td>
+<td>Fruit</td>
+<td>Orange</td>
+<td>126</td>
+</tr>
+<tr>
+<td>Apple</td>
+<td>Fruit</td>
+<td>Any</td>
+<td>62</td>
+</tr>
+<tr>
+<td>Lemon</td>
+<td>Fruit</td>
+<td>Yellow</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Carrot</td>
+<td>Vegetable</td>
+<td>Red</td>
+<td>14</td>
+</tr>
+</tbody>
+</table></div>
+            </div>
+          
+
+          <div class="linklist-item-infos clear">
+            
+              <div class="linklist-item-tags">
+                <i class="fa fa-tags" aria-hidden="true"></i>
+                
+                
+                  <span class="label label-tag" title="Add tag">
+                    <a href="/add-tag/shaarli">shaarli</a>
+                  </span>
+                  &middot;
+                
+                  <span class="label label-tag" title="Add tag">
+                    <a href="/add-tag/help">help</a>
+                  </span>
+                  
+                
+              </div>
+            
+
+            <div class="linklist-item-infos-date-url-block pure-g">
+              <div class="linklist-item-infos-dateblock pure-u-lg-7-12 pure-u-1">
+                
+                  <div class="linklist-item-infos-controls-group pure-u-0 pure-u-lg-visible">
+                    <span class="linklist-item-infos-controls-item ctrl-checkbox">
+                      <input type="checkbox" class="link-checkbox" value="1">
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-edit">
+                      <a href="/admin/shaare/1" aria-label="Edit" title="Edit"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-delete">
+                      <a href="/admin/shaare/delete?id=1&amp;token=77f89ba9c84e74de3ef14aa7211d6079656d731e" aria-label="Delete"
+                         title="Delete" class="delete-link pure-u-0 pure-u-lg-visible confirm-delete">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-pin">
+                      <a href="/admin/shaare/1/pin?token=77f89ba9c84e74de3ef14aa7211d6079656d731e"
+                         title="Toggle sticky" aria-label="Toggle sticky" class="pin-link  pure-u-0 pure-u-lg-visible">
+                        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                  </div>
+                
+                <a href="/shaare/5onSVw" title="Permalink">
+                  
+                    
+                    <span class="linkdate" title="Permalink">
+                      <i class="fa fa-clock-o" aria-hidden="true"></i>
+                      10 novembre 2020 à 03:54:06 UTC
+                      
+                      &middot;
+                    </span>
+                  
+                  permalink
+                </a>
+
+                
+                  <a href="/admin/shaare/private/5onSVw?token=77f89ba9c84e74de3ef14aa7211d6079656d731e" title="Share a private link">
+                    <i class="fa fa-share-alt"></i>
+                  </a>
+                
+
+                <div class="pure-u-0 pure-u-lg-visible">
+                  
+                    &middot;
+                    
+                    
+                      <div class="linkqrcode">
+    <a href="#" onclick="showQrCode(this); return false;" class="qrcode" data-permalink="/shaare/5onSVw">
+        <img src="/plugins/qrcode/qrcode.png" class="linklist-plugin-icon" title="QR-Code" alt="QRCode">
+    </a>
+</div>
+
+                      
+                    
+                  
+                </div>
+              </div><div
+                
+                class="linklist-item-infos-url pure-u-lg-5-12 pure-u-1">
+                <a href="/shaare/5onSVw" aria-label="Note: Shaare descriptions" title="Note: Shaare descriptions">
+                  <i class="fa fa-link" aria-hidden="true"></i> /shaare/5onSVw
+                </a>
+                <div class="linklist-item-buttons pure-u-0 pure-u-lg-visible">
+                  <a href="#" aria-label="Fold" title="Fold" class="fold-button"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                </div>
+              </div>
+              <div class="mobile-buttons pure-u-1 pure-u-lg-0">
+                
+                  
+                  
+                    <div class="linkqrcode">
+    <a href="#" onclick="showQrCode(this); return false;" class="qrcode" data-permalink="/shaare/5onSVw">
+        <img src="/plugins/qrcode/qrcode.png" class="linklist-plugin-icon" title="QR-Code" alt="QRCode">
+    </a>
+</div>
+
+                    
+                  
+                
+                
+                  &middot;
+                  <a href="/admin/shaare/delete?id=1&amp;token=77f89ba9c84e74de3ef14aa7211d6079656d731e" aria-label="Delete"
+                     title="Delete" class="delete-link confirm-delete">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="/admin/shaare/1" aria-label="Edit" title="Edit">
+                    <i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="/admin/shaare/1/pin?token=77f89ba9c84e74de3ef14aa7211d6079656d731e"
+                     aria-label="Toggle sticky"
+                     title="Toggle sticky"
+                     class="pin-link "
+                  >
+                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="anchor" id="UZQTUw"></div>
+
+        <div class="linklist-item linklist-item private" data-id="0">
+          <div class="linklist-item-title">
+            
+              <div
+                class="linklist-item-thumbnail "
+                style="width:125px;height:90px;"
+                
+              >
+                <div class="thumbnail">
+                  
+                  <a href="https://www.youtube.com/watch?v=DVEUcbPkb-c" aria-hidden="true" tabindex="-1">
+                  <img data-src="/cache/thumb/14dd5266c70789bdc806364df4586335/7fb845c39d194747d128e9e70664a2ca05d881ae125901.jpg" class="b-lazy"
+                    src=""
+                    alt="" width="125" height="90" />
+                  </a>
+                </div>
+              </div>
+            
+
+            <div class="linklist-item-editbuttons">
+              
+              
+                <span class="label label-private">Private</span>
+              
+            </div>
+
+            <h2>
+              <a href="https://www.youtube.com/watch?v=DVEUcbPkb-c" class="linklist-real-url">
+                
+                  <i class="fa fa-external-link" aria-hidden="true"></i>
+                
+
+                <span class="linklist-link">Calm Jazz Music - YouTube (private bookmark with thumbnail demo)</span>
+              </a>
+            </h2>
+          </div>
+
+          
+            <div class="linklist-item-description">
+              <div class="markdown"><p>Shaarli will automatically pick up the thumbnail for links to a variety of websites.</p>
+<p>Explore your new Shaarli instance by trying out controls and menus.<br />
+Visit the project on <a href="https://github.com/shaarli/Shaarli">Github</a> or <a href="https://shaarli.readthedocs.io/en/master/">the documentation</a> to learn more about Shaarli.</p>
+<p>Now you can edit or delete the default shaares.</p></div>
+            </div>
+          
+
+          <div class="linklist-item-infos clear">
+            
+              <div class="linklist-item-tags">
+                <i class="fa fa-tags" aria-hidden="true"></i>
+                
+                
+                  <span class="label label-tag" title="Add tag">
+                    <a href="/add-tag/shaarli">shaarli</a>
+                  </span>
+                  &middot;
+                
+                  <span class="label label-tag" title="Add tag">
+                    <a href="/add-tag/help">help</a>
+                  </span>
+                  &middot;
+                
+                  <span class="label label-tag" title="Add tag">
+                    <a href="/add-tag/thumbnail">thumbnail</a>
+                  </span>
+                  
+                
+              </div>
+            
+
+            <div class="linklist-item-infos-date-url-block pure-g">
+              <div class="linklist-item-infos-dateblock pure-u-lg-7-12 pure-u-1">
+                
+                  <div class="linklist-item-infos-controls-group pure-u-0 pure-u-lg-visible">
+                    <span class="linklist-item-infos-controls-item ctrl-checkbox">
+                      <input type="checkbox" class="link-checkbox" value="0">
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-edit">
+                      <a href="/admin/shaare/0" aria-label="Edit" title="Edit"><i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i></a>
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-delete">
+                      <a href="/admin/shaare/delete?id=0&amp;token=77f89ba9c84e74de3ef14aa7211d6079656d731e" aria-label="Delete"
+                         title="Delete" class="delete-link pure-u-0 pure-u-lg-visible confirm-delete">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                    <span class="linklist-item-infos-controls-item ctrl-pin">
+                      <a href="/admin/shaare/0/pin?token=77f89ba9c84e74de3ef14aa7211d6079656d731e"
+                         title="Toggle sticky" aria-label="Toggle sticky" class="pin-link  pure-u-0 pure-u-lg-visible">
+                        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                      </a>
+                    </span>
+                  </div>
+                
+                <a href="/shaare/UZQTUw" title="Permalink">
+                  
+                    
+                    <span class="linkdate" title="Edited: 10 novembre 2020 à 03:54:08 UTC">
+                      <i class="fa fa-clock-o" aria-hidden="true"></i>
+                      10 novembre 2020 à 03:54:06 UTC
+                      *
+                      &middot;
+                    </span>
+                  
+                  permalink
+                </a>
+
+                
+                  <a href="/admin/shaare/private/UZQTUw?token=77f89ba9c84e74de3ef14aa7211d6079656d731e" title="Share a private link">
+                    <i class="fa fa-share-alt"></i>
+                  </a>
+                
+
+                <div class="pure-u-0 pure-u-lg-visible">
+                  
+                    &middot;
+                    
+                    
+                      <div class="linkqrcode">
+    <a href="#" onclick="showQrCode(this); return false;" class="qrcode" data-permalink="https://www.youtube.com/watch?v=DVEUcbPkb-c">
+        <img src="/plugins/qrcode/qrcode.png" class="linklist-plugin-icon" title="QR-Code" alt="QRCode">
+    </a>
+</div>
+
+                      
+                    
+                  
+                </div>
+              </div><div
+                
+                class="linklist-item-infos-url pure-u-lg-5-12 pure-u-1">
+                <a href="https://www.youtube.com/watch?v=DVEUcbPkb-c" aria-label="Calm Jazz Music - YouTube (private bookmark with thumbnail demo)" title="Calm Jazz Music - YouTube (private bookmark with thumbnail demo)">
+                  <i class="fa fa-link" aria-hidden="true"></i> https://www.youtube.com/watch?v=DVEUcbPkb-c
+                </a>
+                <div class="linklist-item-buttons pure-u-0 pure-u-lg-visible">
+                  <a href="#" aria-label="Fold" title="Fold" class="fold-button"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+                </div>
+              </div>
+              <div class="mobile-buttons pure-u-1 pure-u-lg-0">
+                
+                  
+                  
+                    <div class="linkqrcode">
+    <a href="#" onclick="showQrCode(this); return false;" class="qrcode" data-permalink="https://www.youtube.com/watch?v=DVEUcbPkb-c">
+        <img src="/plugins/qrcode/qrcode.png" class="linklist-plugin-icon" title="QR-Code" alt="QRCode">
+    </a>
+</div>
+
+                    
+                  
+                
+                
+                  &middot;
+                  <a href="/admin/shaare/delete?id=0&amp;token=77f89ba9c84e74de3ef14aa7211d6079656d731e" aria-label="Delete"
+                     title="Delete" class="delete-link confirm-delete">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="/admin/shaare/0" aria-label="Edit" title="Edit">
+                    <i class="fa fa-pencil-square-o edit-link" aria-hidden="true"></i>
+                  </a>
+                  &middot;
+                  <a href="/admin/shaare/0/pin?token=77f89ba9c84e74de3ef14aa7211d6079656d731e"
+                     aria-label="Toggle sticky"
+                     title="Toggle sticky"
+                     class="pin-link "
+                  >
+                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+  <div id="plugin_zone_end_linklist" class="plugin_zone">
+    
+  </div>
+
+<div id="linklist-paging-bottom-block" class="pure-g link-count-block">
+  <div class="pure-u-lg-2-24 pure-u-1-24"></div>
+  <div id="linklist-paging-bottom-content" class="pure-u-lg-20-24 pure-u-22-24">
+    <div class="linklist-paging">
+  <div class="paging pure-g">
+    <div class="linklist-filters pure-u-1-3">
+      <span class="linklist-filters-text pure-u-0 pure-u-lg-visible">
+        Filters
+      </span>
+      
+      <a href="/admin/visibility/private" aria-label="Only display private links" title="Only display private links"
+         class="filter-off"
+      ><i class="fa fa-user-secret" aria-hidden="true"></i></a>
+      <a href="/admin/visibility/public" aria-label="Only display public links" title="Only display public links"
+         class="filter-off"
+      ><i class="fa fa-globe" aria-hidden="true"></i></a>
+      
+      <a href="/untagged-only" aria-label="Filter untagged links" title="Filter untagged links"
+         class="filter-off"
+      ><i class="fa fa-tag" aria-hidden="true"></i></a>
+      
+      <a href="#" aria-label="Select all" title="Select all"
+         class="filter-off select-all-button pure-u-0 pure-u-lg-visible"
+      ><i class="fa fa-check-square-o" aria-hidden="true"></i></a>
+      
+      <a href="#" class="filter-off fold-all pure-u-lg-0" aria-label="Fold all" title="Fold all">
+        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+      </a>
+      
+    </div>
+
+
+    <div class="linklist-pages pure-u-1-3">
+      
+      
+      
+
+    </div>
+
+    <div class="linksperpage pure-u-1-3">
+      <div class="pure-u-0 pure-u-lg-visible">Links per page</div>
+      <a href="/links-per-page?nb=20"
+			class="selected">20</a>
+      <a href="/links-per-page?nb=50"
+			>50</a>
+      <a href="/links-per-page?nb=100"
+			>100</a>
+      <form method="GET" class="pure-u-0 pure-u-lg-visible" action="/links-per-page">
+        <input type="text" name="nb" placeholder="133"
+			>
+      </form>
+      <a href="#" class="filter-off fold-all pure-u-0 pure-u-lg-visible" aria-label="Fold all" title="Fold all">
+        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+</main>
+
+<div class="pure-g">
+  <div class="pure-u-2-24"></div>
+  <footer id="footer" class="pure-u-20-24 footer-container" role="contentinfo">
+    <i class="fa fa-shaarli" aria-hidden="true"></i>
+    <strong><a href="https://github.com/shaarli/Shaarli">Shaarli</a></strong>
+    
+      dev
+    
+    &middot;
+    The personal, minimalist, super-fast, database free, bookmarking service by the Shaarli community &middot;
+    <a href="/doc/html/index.html" rel="nofollow">Documentation</a>
+      
+  </footer>
+  <div class="pure-u-2-24"></div>
+</div>
+
+
+
+
+	<script src="/plugins/qrcode/shaarli-qrcode.js"></script>
+
+
+<div id="js-translations" class="hidden" aria-hidden="true">
+  <span id="translation-fold">Fold</span>
+  <span id="translation-fold-all">Fold all</span>
+  <span id="translation-expand">Expand</span>
+  <span id="translation-expand-all">Expand all</span>
+  <span id="translation-delete-link">Are you sure you want to delete this link?</span>
+  <span id="translation-delete-tag">Are you sure you want to delete this tag?</span>
+  <span id="translation-shaarli-desc">
+    The personal, minimalist, super-fast, database free, bookmarking service by the Shaarli community
+  </span>
+</div>
+
+<input type="hidden" name="js_base_path" value="" />
+<input type="hidden" name="token" value="77f89ba9c84e74de3ef14aa7211d6079656d731e" id="token" />
+<input type="hidden" name="tags_separator" value=" " id="tags_separator" />
+
+<script src="/tpl/default/js/shaarli.min.js?v=c87ea616ecca0f449689d82ce0292608aa9b339fece8b661dbe4120491fe3100"></script>
+
+<script src="/tpl/default/js/thumbnails.min.js?v=c87ea616ecca0f449689d82ce0292608aa9b339fece8b661dbe4120491fe3100"></script>
+<script src="/tpl/default/js/metadata.min.js?v=c87ea616ecca0f449689d82ce0292608aa9b339fece8b661dbe4120491fe3100"></script>
+</body>
+</html>
