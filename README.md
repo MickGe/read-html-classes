@@ -6,19 +6,30 @@ To extract tags, classes & id from [shaarli](https://demo.shaarli.org/)'s `index
 
 ## How to use
 
-Launch in the terminal:
+### Launch in the terminal
 
-```bash
-deno run --allow-read --allow-write read-html.ts index.html
+```console
+deno run --allow-read --allow-write read-html.ts <INPUT_PATH/filename.html> [OUTPUT_PATH]
 ```
 
-or for debbugging
+or:
 
 ```bash
-deno run --allow-read --allow-write --unstable --watch read-html.ts index.html
+./read-html.ts <INPUT_PATH/filename.html> [OUTPUT_PATH]
 ```
+
+&#x26A0; On bash script, _deno_ is configured with `--allow-all`.  
+Or switch lines 1 & 2 and change `--allow-write=/Users/<username>/`.
+
+### Output
 
 The result is in `classes.html`.
+
+### Debugging tips
+
+```console
+deno run --allow-read --allow-write --unstable --watch read-html.ts <INPUT_PATH/filename.html> [OUTPUT_PATH]
+```
 
 ## Known issues
 
