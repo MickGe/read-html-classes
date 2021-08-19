@@ -36,10 +36,10 @@ try {
 		const tagName = line.match(regexTag)?.join("");
 		const closingTag = !!line.match(regexClosingTag);
 		const autoClose = !!line.match(regexAutoClose);
-		let textStart = `${(closingTag || tagName === "body" || autoClose) ? "" : "<ul>"
+		const textStart = `${(closingTag || tagName === "body" || autoClose) ? "" : "<ul>"
 			}`;
-		const textClass = (!!className)
-			? `<li class="max-width"><span class="bold">Tag: ${tagName}</span> &#x279F <span class="bold">Class:</span> ${className}${!!idName ? ` &#x279F <span class="bold">Id:</span> ${idName}` : " "
+		const textClass = (className)
+			? `<li class="max-width"><span class="bold">Tag: ${tagName}</span> &#x279F <span class="bold">Class:</span> ${className}${idName ? ` &#x279F <span class="bold">Id:</span> ${idName}` : " "
 			}${textContent
 				? `<span class="italic">(content: ${textContent})</span>`
 				: " "

@@ -31,6 +31,20 @@ The result is in `classes.html`.
 deno run --allow-read --allow-write --unstable --watch read-html.ts <INPUT_PATH/filename.html> [OUTPUT_PATH]
 ```
 
+## Bonus: Create binary
+
+```bash
+deno compile --unstable --allow-read --allow-write read-html.ts
+```
+
+The option `--unstable` is optional.
+
+To use:
+
+```bash
+./read-html index.html [OUPUT_PATH]
+```
+
 ## Known issues
 
 Maybe too much `<ul>` compare to `</ul>`...
